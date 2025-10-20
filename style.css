@@ -1,0 +1,148 @@
+:root {
+    --primary-color: #ff8c00; /* Oranye Terang */
+    --text-color-dark: #222;
+    --text-color-light: #fff;
+    --box-bg: #000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--primary-color);
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+    max-width: 90%; /* Responsif */
+}
+
+/* --- Bagian Header --- */
+.header {
+    margin-bottom: 40px;
+    position: relative;
+    /* Efek garis miring di belakang teks (seperti di gambar) */
+    background: 
+        linear-gradient(135deg, transparent 49%, var(--text-color-light) 49%, var(--text-color-light) 51%, transparent 51%),
+        linear-gradient(-135deg, transparent 49%, var(--text-color-light) 49%, var(--text-color-light) 51%, transparent 51%);
+    background-size: 100% 1px;
+    background-repeat: repeat-x;
+}
+
+.coming-soon {
+    background-color: var(--box-bg);
+    color: #ffd700; /* Kuning keemasan untuk kontras */
+    padding: 10px 30px;
+    display: inline-block;
+    font-size: 2.5em; /* Ukuran besar */
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    transform: skewX(-10deg); /* Miring sedikit */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.under-construction {
+    background-color: var(--text-color-light);
+    color: var(--text-color-dark);
+    padding: 5px 15px;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 700;
+    margin-top: 5px;
+    text-transform: uppercase;
+    transform: skewX(-10deg);
+}
+
+
+/* --- Bagian Countdown Timer --- */
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Jarak antar kotak */
+}
+
+.time-box {
+    background-color: var(--box-bg);
+    color: var(--text-color-light);
+    padding: 15px 10px;
+    width: 23%; /* Memastikan 4 kotak muat dalam lebar total */
+    min-width: 60px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.number {
+    font-size: 3em; /* Besar di desktop */
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.label {
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+/* --- Media Queries untuk Responsifitas (Smartphone/Tablet) --- */
+@media (max-width: 768px) {
+    .coming-soon {
+        font-size: 1.8em;
+        padding: 8px 20px;
+    }
+
+    .under-construction {
+        font-size: 0.8em;
+    }
+
+    .countdown-timer {
+        gap: 10px;
+    }
+
+    .number {
+        font-size: 2em; /* Kecilkan sedikit di perangkat mobile */
+    }
+
+    .label {
+        font-size: 0.7em;
+    }
+}
+
+@media (max-width: 480px) {
+    .coming-soon {
+        font-size: 1.5em;
+        letter-spacing: 3px;
+    }
+    
+    .number {
+        font-size: 1.5em;
+    }
+}
+
+/* --- Tambahan untuk Gambar di Bawah Countdown --- */
+.image-below-countdown {
+    margin-top: 30px; /* Jarak dari countdown timer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.responsive-image {
+    max-width: 100%; /* Gambar akan mengecil jika layar lebih kecil */
+    height: auto; /* Mempertahankan rasio aspek gambar */
+    display: block; /* Menghilangkan ruang kosong di bawah gambar */
+    border-radius: 10px; /* Sedikit lengkungan pada sudut gambar (opsional) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sedikit bayangan (opsional) */
+}
