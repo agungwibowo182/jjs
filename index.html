@@ -3,40 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon - Countdown</title>
+    <title>Coming Soon - Countdown & Rundown</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
-        <div class="header">
-            <h1 class="coming-soon">COMING SOON</h1>
-            <br>
-            <p class="under-construction">Jalan Jalan Sanns Jilid 3</p>
-            <br>
-              <p class="under-construction">1 & 2 November 2025 Puncak Bogor Villa Yudi</p>
-        </div>
         
-        <div class="countdown-timer">
-            <div class="time-box">
-                <span class="number" id="days">00</span>
-                <span class="label">DAYS</span>
-            </div>
-            <div class="time-box">
-                <span class="number" id="hours">00</span>
-                <span class="label">HOURS</span>
-            </div>
-            <div class="time-box">
-                <span class="number" id="minutes">00</span>
-                <span class="label">MINUTES</span>
-            </div>
-            <div class="time-box">
-                <span class="number" id="seconds">00</span>
-                <span class="label">SECONDS</span>
-            </div>
+        <div class="navigation-menu">
+            <button id="show-countdown" class="nav-button active">Countdown</button>
+            <button id="show-rundown" class="nav-button">Rundown Acara</button>
         </div>
-        <div class="image-below-countdown">
-            <img src="jodi.png" alt="Thanks to Allah" class="responsive-image">
+
+        <div id="countdown-page" class="page-content active">
+            <div class="header">
+                <h1 class="coming-soon">COMING SOON</h1>
+                <br>
+                <p class="under-construction">Jalan Jalan Sanns Jilid 3</p>
+                <br>
+                <p class="under-construction"> 1 & 2 November 2025 Puncak Bogor Villa Yudi</p>
+            </div>
+            
+            <div class="countdown-timer">
+                <div class="time-box">
+                    <span class="number" id="days">00</span>
+                    <span class="label">DAYS</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="hours">00</span>
+                    <span class="label">HOURS</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="minutes">00</span>
+                    <span class="label">MINUTES</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="seconds">00</span>
+                    <span class="label">SECONDS</span>
+                </div>
+            </div>
+
+            <div class="image-below-countdown">
+                <img src="jodi.png" alt="Thanks to Allah" class="responsive-image">
+            </div>
+        </div> 
+        
+        <div id="rundown-page" class="page-content hidden">
+          <h2 class="rundown-title"> Rundown Acara JJS Jilid 3</h2>
+            <div class="rundown-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Waktu</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>07.00-09.30</td><td>Kumpul</td></tr>
+                        <tr><td>2</td><td>10.00</td><td>Berangkat menuju villa</td></tr>
+                        <tr><td>3</td><td>12.00</td><td>Check in villa</td></tr>
+                        <tr><td>4</td><td>12.30-13.30</td><td>Isoma (Makan siang)</td></tr>
+                        <tr><td>5</td><td>14.00-15.30</td><td>Silaturahmi saanss</td></tr>
+                        <tr><td>6</td><td>16.00-16.30</td><td>Acara 1</td></tr>
+                        <tr><td>7</td><td>16.30-17.00</td><td>Acara 2</td></tr>
+                        <tr><td>8</td><td>17.00-18.30</td><td>Isoma (Makan malam)</td></tr>
+                        <tr><td>9</td><td>19.00-19.30</td><td>Acara 3</td></tr>
+                        <tr><td>10</td><td>20.00-22.00</td><td>Grill time</td></tr>
+                        <tr><td>11</td><td>22.00</td><td>Istirahat</td></tr>
+                        <tr><td>12</td><td>04.30</td><td>Shubuh berjamaah</td></tr>
+                        <tr><td>13</td><td>07.00-08.00</td><td>Sarapan Pagi</td></tr>
+                        <tr><td>14</td><td>08.00-11.00</td><td>Silaturahmi saanss</td></tr>
+                        <tr><td>15</td><td>12.00-12.30</td><td>Prepare pulang</td></tr>
+                        <tr><td>16</td><td>13.00</td><td>Check out villa</td></tr>
+                        <tr><td>17</td><td>13.15</td><td>Pulang</td></tr>
+                        <tr><td>18</td><td>15.00</td><td>Mampir tempat oleh-oleh</td></tr>
+                        <tr><td>19</td><td>18.00</td><td>Sampai ke wilayah dengan selamat</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>
