@@ -323,3 +323,13 @@ body {
     }
 }
 
+/* Gaya untuk Header Hari */
+.rundown-table-wrapper .day-header {
+    background-color: #ffd700; /* Kuning keemasan */
+    color: var(--box-bg); /* Teks hitam */
+    font-size: 1.2em;
+    font-weight: 900;
+    text-align: center;
+    padding: 10px 0;
+    letter-spacing: 1px;
+}
