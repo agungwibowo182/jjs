@@ -1,198 +1,287 @@
-// --- 1. DATA DINAMIS (Pusat Kontrol) ---
-// Waktu Acara Dimulai: 1 November 2025, Pukul 07:00:00 (Waktu Kumpul/Acara)
-const LAUNCH_DATE = new Date("Nov 1, 2025 07:00:00").getTime(); 
+console.log("script loaded");
 
-// Data Gambar Galeri: Mudah ditambahkan/dihapus
-const GALLERY_IMAGES = [
-    { src: "assets/villa1.jpeg", alt: "Area Kamar" },
-    { src: "assets/villa2.jpeg", alt: "Area Kamar" },
-    { src: "assets/villa21.jpeg", alt: "Area Kolam Renang" },
-    { src: "assets/villa22.jpeg", alt: "Area Kolam Renang" },
-    { src: "assets/villa5.jpeg", alt: "Area Kamar" },
-    { src: "assets/villa6.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa7.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa8.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa9.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa10.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa11.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa12.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa13.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa14.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa15.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa16.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa17.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa18.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa19.jpeg", alt: "Gambar villa" },
-    { src: "assets/villa20.jpeg", alt: "Gambar villa" }
-    
-    
-];
+/* =========================
+   COUNTDOWN
+========================= */
 
+const LAUNCH_DATE =
+    new Date("Nov 1, 2025 07:00:00").getTime();
 
-// --- 2. DEKLARASI VARIABEL DOM GLOBAL ---
-// Elemen Countdown
-const daysEl = document.getElementById('days');
-const hoursEl = document.getElementById('hours');
-const minutesEl = document.getElementById('minutes');
-const secondsEl = document.getElementById('seconds');
+const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minutesEl = document.getElementById("minutes");
+const secondsEl = document.getElementById("seconds");
 
-// Elemen Navigasi Halaman
-const pages = {
-    countdown: document.getElementById('countdown-page'),
-    rundown: document.getElementById('rundown-page'),
-    gallery: document.getElementById('gallery-page') // Pastikan ID halaman Gallery benar
-};
-const navButtons = {
-    countdown: document.getElementById('show-countdown'),
-    rundown: document.getElementById('show-rundown'),
-    gallery: document.getElementById('show-gallery') // Kunci ini sekarang akan menemukan tombol yang benar!
-};
-
-// Elemen Galeri/Lightbox
-const galleryGrid = document.getElementById('gallery-grid');
-const lightbox = document.getElementById('lightbox');
-const lightboxImage = document.getElementById('lightbox-image');
-const lightboxCaption = document.querySelector('.lightbox-caption');
-const imageCounter = document.querySelector('.image-counter');
-const closeBtn = document.querySelector('.close-btn');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-
-let currentIndex = 0; // Index gambar yang sedang ditampilkan
-
-
-// --- 3. COUNTDOWN TIMER LOGIC ---
 function formatTime(time) {
-    return time < 10 ? (`0${time}`) : time;
+    return time < 10 ? `0${time}` : time;
 }
 
 function updateCountdown() {
+
     const now = new Date().getTime();
+
     const distance = LAUNCH_DATE - now;
-    
-    // Perhitungan waktu...
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Update display...
-    daysEl.innerHTML = formatTime(days);
-    hoursEl.innerHTML = formatTime(hours);
-    minutesEl.innerHTML = formatTime(minutes);
-    secondsEl.innerHTML = formatTime(seconds);
+    const days =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
 
-    // Jika selesai...
-    if (distance < 0) {
-        clearInterval(countdownInterval);
-        daysEl.innerHTML = hoursEl.innerHTML = minutesEl.innerHTML = secondsEl.innerHTML = "00";
-        const comingSoonEl = document.querySelector('#countdown-page .coming-soon');
-        const underConstructionEls = document.querySelectorAll('#countdown-page .under-construction');
-        if (comingSoonEl) comingSoonEl.textContent = "ACARA SUDAH DIMULAI!";
-        if (underConstructionEls.length > 0) underConstructionEls[0].textContent = "SELAMAT BERSANNS RIA!";
-        if (underConstructionEls.length > 1) underConstructionEls[1].textContent = "Villa Yudi, Puncak Bogor.";
-    }
+    const hours =
+        Math.floor(
+            (distance % (1000 * 60 * 60 * 24))
+            / (1000 * 60 * 60)
+        );
+
+    const minutes =
+        Math.floor(
+            (distance % (1000 * 60 * 60))
+            / (1000 * 60)
+        );
+
+    const seconds =
+        Math.floor(
+            (distance % (1000 * 60))
+            / 1000
+        );
+
+    daysEl.textContent = formatTime(days);
+    hoursEl.textContent = formatTime(hours);
+    minutesEl.textContent = formatTime(minutes);
+    secondsEl.textContent = formatTime(seconds);
 }
+
 updateCountdown();
-const countdownInterval = setInterval(updateCountdown, 1000);
 
+setInterval(updateCountdown, 1000);
 
-// --- 4. PAGE NAVIGATION LOGIC ---
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+const pages = {
+    countdown: document.getElementById("countdown-page"),
+    rundown: document.getElementById("rundown-page"),
+    gallery: document.getElementById("gallery-page")
+};
+
+const navButtons = {
+    countdown: document.getElementById("show-countdown"),
+    rundown: document.getElementById("show-rundown"),
+    gallery: document.getElementById("show-gallery")
+};
+
 function switchPage(targetPage) {
-    // Sembunyikan semua halaman dan hapus 'active'
-    Object.keys(pages).forEach(key => {
-        pages[key].classList.add('hidden');
-        navButtons[key].classList.remove('active');
+
+    Object.values(pages).forEach(page => {
+        page.classList.add("hidden");
     });
 
-    // Tampilkan halaman target dan set 'active'
-    pages[targetPage].classList.remove('hidden');
-    navButtons[targetPage].classList.add('active');
+    Object.values(navButtons).forEach(button => {
+        button.classList.remove("active");
+    });
+
+    pages[targetPage].classList.remove("hidden");
+
+    navButtons[targetPage].classList.add("active");
 }
 
-// Event Listener untuk tombol menu
 Object.keys(navButtons).forEach(key => {
-    navButtons[key].addEventListener('click', () => switchPage(key));
+
+    navButtons[key].addEventListener("click", () => {
+        switchPage(key);
+    });
+
 });
 
-// Default page saat pertama dimuat
-switchPage('countdown');
+switchPage("countdown");
 
+/* =========================
+   GALLERY
+========================= */
 
-// --- 5. DINAMIC GALLERY AND LIGHTBOX LOGIC ---
-// Membuat Grid Galeri dari data array (Dinamis)
+const GALLERY_IMAGES = [
+
+    {
+        src: "assets/villa1.jpeg",
+        alt: "Villa 1"
+    },
+
+    {
+        src: "assets/villa2.jpeg",
+        alt: "Villa 2"
+    },
+
+    {
+        src: "assets/villa3.jpeg",
+        alt: "Villa 3"
+    }
+
+];
+
+const galleryGrid =
+    document.getElementById("gallery-grid");
+
+const lightbox =
+    document.getElementById("lightbox");
+
+const lightboxImage =
+    document.getElementById("lightbox-image");
+
+const lightboxCaption =
+    document.querySelector(".lightbox-caption");
+
+const imageCounter =
+    document.querySelector(".image-counter");
+
+const closeBtn =
+    document.querySelector(".close-btn");
+
+const prevBtn =
+    document.querySelector(".prev-btn");
+
+const nextBtn =
+    document.querySelector(".next-btn");
+
+let currentIndex = 0;
+
+/* CREATE GALLERY */
+
 function createGallery() {
-    galleryGrid.innerHTML = '';
+
+    galleryGrid.innerHTML = "";
+
     GALLERY_IMAGES.forEach((image, index) => {
-        const img = document.createElement('img');
+
+        const img = document.createElement("img");
+
         img.src = image.src;
+
         img.alt = image.alt;
-        img.classList.add('gallery-item');
-        img.dataset.index = index; 
-        img.addEventListener('click', () => openLightbox(index));
+
+        img.classList.add("gallery-item");
+
+        img.addEventListener("click", () => {
+            openLightbox(index);
+        });
+
         galleryGrid.appendChild(img);
+
     });
 }
 
+/* LIGHTBOX */
+
 function updateLightboxContent() {
-    const currentItem = GALLERY_IMAGES[currentIndex];
+
+    const currentItem =
+        GALLERY_IMAGES[currentIndex];
+
     lightboxImage.src = currentItem.src;
-    lightboxImage.alt = currentItem.alt;
-    lightboxCaption.textContent = currentItem.alt;
-    imageCounter.textContent = `${currentIndex + 1} / ${GALLERY_IMAGES.length}`;
+
+    lightboxCaption.textContent =
+        currentItem.alt;
+
+    imageCounter.textContent =
+        `${currentIndex + 1} / ${GALLERY_IMAGES.length}`;
 }
 
 function openLightbox(index) {
+
     currentIndex = index;
+
     updateLightboxContent();
-    lightbox.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+
+    lightbox.classList.remove("hidden");
+
+    document.body.style.overflow = "hidden";
 }
 
-const handleCloseLightbox = () => {
-    lightbox.classList.add('hidden');
-    document.body.style.overflow = '';
-};
+function closeLightbox() {
 
-// Event Listener Lightbox
-prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
-    updateLightboxContent();
-});
-nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % GALLERY_IMAGES.length;
-    updateLightboxContent();
-});
-closeBtn.addEventListener('click', handleCloseLightbox);
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
-        handleCloseLightbox();
+    lightbox.classList.add("hidden");
+
+    document.body.style.overflow = "";
+}
+
+if (prevBtn) {
+
+    prevBtn.addEventListener("click", () => {
+
+        currentIndex =
+            (currentIndex - 1 + GALLERY_IMAGES.length)
+            % GALLERY_IMAGES.length;
+
+        updateLightboxContent();
+
+    });
+
+}
+
+if (nextBtn) {
+
+    nextBtn.addEventListener("click", () => {
+
+        currentIndex =
+            (currentIndex + 1)
+            % GALLERY_IMAGES.length;
+
+        updateLightboxContent();
+
+    });
+
+}
+
+if (closeBtn) {
+
+    closeBtn.addEventListener("click", () => {
+        closeLightbox();
+    });
+
+}
+
+document.addEventListener("keydown", (e) => {
+
+    if (
+        e.key === "Escape" &&
+        !lightbox.classList.contains("hidden")
+    ) {
+        closeLightbox();
     }
+
 });
 
-// Inisialisasi Galeri saat script dimuat
 createGallery();
-// --- Tambahkan ini ke bagian Event Listener di script.js ---
 
-    const mapsLink = document.querySelector('.click-maps-link');
+/* =========================
+   MAPS BUTTON
+========================= */
 
-    if (mapsLink) {
-        mapsLink.addEventListener('click', (e) => {
-            e.preventDefault(); // Mencegah perilaku hash link default
-            
-            // 1. Pindah ke halaman Gallery
-            switchPage('gallery');
+const mapsLink =
+    document.querySelector(".click-maps-link");
 
-            // 2. Gulir ke target (#lokasi-villa) setelah halaman berganti
-            // Delay 100ms memberi waktu browser untuk mengganti display page
-            setTimeout(() => {
-                const targetElement = document.getElementById('lokasi-villa');
-                if (targetElement) {
-                    // Gunakan behavior: 'smooth' untuk guliran yang mulus
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
-                }
-            }, 100); 
-        });
-    }
+if (mapsLink) {
 
-// --- End Event Listener Tambahan ---
+    mapsLink.addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        switchPage("gallery");
+
+        setTimeout(() => {
+
+            const target =
+                document.getElementById("lokasi-villa");
+
+            if (target) {
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        }, 100);
+
+    });
+
+}
